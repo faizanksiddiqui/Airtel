@@ -1,0 +1,96 @@
+import React, { useState } from "react";
+import styled from "styled-components";
+
+const theme = {
+  black: {
+    default: "#000000",
+    hover: "#e8e4fc"
+  },
+  pink: {
+    default: "#e8e4fc",
+    hover: "#e8e4fc"
+  }
+};
+
+const Button = styled.button`
+  background-color: ${(props) => theme[props.theme].default};
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  outline: 0;
+  margin: 20px 0px;
+  cursor: pointer;
+  box-shadow: 0px 1px 1px lightgray;
+  transition: ease background-color 250ms;
+  &:hover {
+    background-color: ${(props) => theme[props.theme].hover};
+  }
+  &:disabled {
+    cursor: default;
+    opacity: 0.7;
+  }
+`;
+
+Button.defaultProps = {
+  theme: "black"
+};
+
+const ButtonToggle = styled(Button)`
+  opacity: 0.7;
+  ${({ active }) =>
+    active &&
+    `
+    opacity: 1; 
+  `}
+`;
+
+
+function TabGroup() {
+  const [active, setActive] = useState(types[0]);
+  return (
+    <div className="PayBill">
+        <div className="recharge">
+            <div className="recharge-text">
+                <p><b>Recharge or pay bills</b></p>
+            </div>
+        </div>
+        <div className="BT">
+            {types.map((type) => (
+            <ButtonToggle
+            
+                key={type}
+                active={active === type}
+                onClick={() => setActive(type)}
+            >
+                {type}
+                
+            </ButtonToggle>
+            ))}
+        </div>
+        <p />
+        
+        <Button>{active} </Button>
+    </div>
+    
+  );
+}
+
+const types = ["Prepaid", "Postpaid", "DTH","Fiber","Airtel Black"];
+
+
+export default function Demo2() {
+  return (
+    <div>
+      <TabGroup />
+    </div>  
+  );
+}
+<li>Get the App</li>
+                        <li><img src="./images/footer1.svg" alt="footer"></img></li>
+                        <li><img src="./images/footer2.svg" alt="footer"></img></li>
+                        <li></li>
+                        <div className="social-icons">
+                        <li>Follow Us On</li>
+                        <li><img src="./images/facebook.png" alt="facebook"></img></li>
+                        </div>
+  
